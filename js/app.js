@@ -67,23 +67,24 @@ function startGame() {
 //debut de la fonction game pour le jeu
 function game(tour){
   var joueur1 = document.getElementById('player1');
-  if (joueur1.classList.contains('active')) {
-    joueur1.classList.remove('active');
-    joueur1.classList.add('player1');
-    tour.classList.add('box-filled-1')
-    var joueur2 = document.getElementsByClassName('players');
-    joueur2[1].classList.remove('player2');
-    joueur2[1].classList.add('active');
-    joueur2[1].id = 'player2';
-  } else if (!joueur1.classList.contains('active')) {
-    var joueur2 = document.getElementById('player2');
-    joueur2.classList.remove('active');
-    joueur2.classList.add('player1');
-    tour.classList.add('box-filled-2')
-    var joueur1 = document.getElementsByClassName('players');
-    joueur1[0].classList.remove('player1');
-    joueur1[0].classList.add('active');
-    joueur1[0].id = 'player1';
+  if (joueur1.classList.contains('active') && !tour.classList.contains('box-filled-2') && !tour.classList.contains('box-filled-1') ) {
+        joueur1.classList.remove('active');
+        joueur1.classList.add('player1');
+        var joueur2 = document.getElementsByClassName('players');
+        joueur2[1].classList.remove('player2');
+        joueur2[1].classList.add('active');
+        joueur2[1].id = 'player2';
+        tour.classList.add('box-filled-1');
+
+  } else if (!joueur1.classList.contains('active') && !tour.classList.contains('box-filled-1') && !tour.classList.contains('box-filled-2')) {
+        var joueur2 = document.getElementById('player2');
+        joueur2.classList.remove('active');
+        joueur2.classList.add('player1');
+        tour.classList.add('box-filled-2');
+        var joueur1 = document.getElementsByClassName('players');
+        joueur1[0].classList.remove('player1');
+        joueur1[0].classList.add('active');
+        joueur1[0].id = 'player1';
   }
 
 }// fin de la fonction game
